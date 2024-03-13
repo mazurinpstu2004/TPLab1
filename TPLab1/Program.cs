@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 
 namespace TPLab1
 {
@@ -51,6 +52,29 @@ namespace TPLab1
             Console.WriteLine("*******************************");
             linkList.Print();
 
+            int check = 1;
+
+            if (linkList.Count == aList.Count && linkList.Count == chList.Count && aList.Count == chList.Count)
+            {
+                for (int i = 0; i < aList.Count; i++)
+                {
+                    if (linkList[i] != aList[i] && linkList[i] != chList[i] && aList[i] != chList[i])
+                    {
+                        Console.WriteLine("Найдена ошибка");
+                        check = 0;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Найдена ошибка");
+                check = 0;
+            }
+            if (check == 1)
+            {
+                Console.WriteLine("Ошибок нет");
+            }
         }
     }
-}
+    }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TPLab1
 {
@@ -27,20 +28,26 @@ namespace TPLab1
                 return null;
             }
             int i = 0;
-            Node p = head;
-            while (p != null && i != pos)
+            int listLength = count;
+            if (pos <= listLength / 2)
             {
-                p = p.Next;
-                i++;
-            }
-            if (i == pos)
-            {
+                Node p = head;
+                while (p != null && i < pos)
+                {
+                    p = p.Next;
+                    i++;
+                }
                 return p;
             }
-
             else
             {
-                return null;
+                Node p = tail;
+                while (p != null && i > pos)
+                {
+                    p = p.Previous;
+                    i--;
+                }
+                return p;
             }
         }
         public void Add(int value)
